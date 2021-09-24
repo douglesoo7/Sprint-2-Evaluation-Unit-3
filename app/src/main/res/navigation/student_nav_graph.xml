@@ -14,6 +14,7 @@
             android:id="@+id/action_sneakerFragment_to_sneakerDetailsFragment"
             app:destination="@id/sneakerDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/sneakerDetailsFragment"
         android:name="com.example.myapplication.SneakerDetailsFragment"
@@ -23,6 +24,7 @@
             android:id="@+id/action_sneakerDetailsFragment_to_checkOutFragment"
             app:destination="@id/checkOutFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/checkOutFragment"
         android:name="com.example.myapplication.CheckOutFragment"

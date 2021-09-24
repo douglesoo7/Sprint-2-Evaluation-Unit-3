@@ -22,7 +22,7 @@ public class SneakerViewHolder extends RecyclerView.ViewHolder {
     public void setData(ResponseDTO responseDTOList) {
         Glide.with(ivSneakerImage).load(responseDTOList.getMedia().getImageUrl()).into(ivSneakerImage);
         tvShoeName.setText(responseDTOList.getName());
-        tvShoePrice.setText(responseDTOList.getRetailPrice());
+        tvShoePrice.setText("$"+responseDTOList.getRetailPrice()+"");
     }
 
     private void initViews(View view) {
