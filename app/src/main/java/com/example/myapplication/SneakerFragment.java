@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SneakerFragment extends Fragment {
+public class SneakerFragment extends Fragment implements ItemClickListener{
 
     SneakerViewAdapter sneakerViewAdapter;
     private List<ResponseDTO> responseDTOList = new ArrayList<>();
@@ -66,5 +66,10 @@ public class SneakerFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setAdapter(sneakerViewAdapter);
         recyclerView.setLayoutManager(gridLayoutManager);
+    }
+
+    @Override
+    public void clickListener(ResponseDTO responseDTO, int position) {
+
     }
 }
