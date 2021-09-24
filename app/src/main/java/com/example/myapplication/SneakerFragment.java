@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,11 +22,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SneakerFragment extends Fragment implements ItemClickListener{
+public class SneakerFragment extends Fragment {
 
     SneakerViewAdapter sneakerViewAdapter;
     private List<ResponseDTO> responseDTOList = new ArrayList<>();
     private RecyclerView recyclerView;
+    //private NavController navController;
 
     @Nullable
     @Override
@@ -37,8 +40,8 @@ public class SneakerFragment extends Fragment implements ItemClickListener{
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerViewSneakers);
         callAPI();
-        Log.d("sachin", "onviewcreated");
-
+        //Log.d("sachin", "onviewcreated");
+        //navController= Navigation.findNavController(view);
     }
 
     private void callAPI() {
@@ -66,10 +69,5 @@ public class SneakerFragment extends Fragment implements ItemClickListener{
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setAdapter(sneakerViewAdapter);
         recyclerView.setLayoutManager(gridLayoutManager);
-    }
-
-    @Override
-    public void clickListener(ResponseDTO responseDTO, int position) {
-
     }
 }

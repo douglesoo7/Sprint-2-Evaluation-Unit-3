@@ -2,5 +2,5 @@ package com.example.myapplication;
 
 public interface ItemClickListener {
 
-    void clickListener(ResponseDTO responseDTO, int position);
+    void onItemClicked(ResponseDTO responseDTO, int position);
 }

@@ -11,10 +11,12 @@ import java.util.List;
 
 public class SneakerViewAdapter extends RecyclerView.Adapter<SneakerViewHolder> {
 
+    private ItemClickListener itemClickListener;
     private List<ResponseDTO> responseDTOList;
 
     public SneakerViewAdapter(List<ResponseDTO> responseDTOList){
         this.responseDTOList=responseDTOList;
+        //this.itemClickListener=itemClickListener;
     }
 
     @NonNull
