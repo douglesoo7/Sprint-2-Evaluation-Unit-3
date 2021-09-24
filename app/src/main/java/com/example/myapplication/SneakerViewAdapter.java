@@ -18,6 +18,7 @@ public class SneakerViewAdapter extends RecyclerView.Adapter<SneakerViewHolder> 
     }
 
     @NonNull
+
     @Override
     public SneakerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.sneakerlayout,parent,false);

@@ -26,34 +26,38 @@ public class SneakerFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         recyclerView = view.findViewById(R.id.recyclerViewSneakers);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        SneakerViewAdapter sneakerViewAdapter = new SneakerViewAdapter(responseDTOList);
-        recyclerView.setAdapter(sneakerViewAdapter);
-
         callAPI();
 
+        Log.d("SAchin", "onviewcreated");
 
     }
 
     private void callAPI() {
         ApiInterface apiInterface = Network.getInstance().create(ApiInterface.class);
-        apiInterface.getSneakers().enqueue(new Callback<ResponseDTO>() {
+        apiInterface.getSneakers().enqueue(new Callback<List<ResponseDTO>>() {
             @Override
-            public void onResponse(Call<ResponseDTO> call, Response<ResponseDTO> response) {
+            public void onResponse(Call<List<ResponseDTO>> call, Response<List<ResponseDTO>> response) {
                 if (response.isSuccessful()) {
-                    responseDTOList = (List<ResponseDTO>) response.body();
-                    Log.d("Sachin", "successful");
+                    responseDTOList = response.body();
+                    setRecyclerView();
+                    Log.d("SAchin", "success");
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseDTO> call, Throwable t) {
+            public void onFailure(Call<List<ResponseDTO>> call, Throwable t) {
                 t.printStackTrace();
-                Log.d("Sachin", "not successful");
+                Log.d("SAchin", "unsuccess");
             }
         });
+    }
+
+    private void setRecyclerView() {
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        SneakerViewAdapter sneakerViewAdapter = new SneakerViewAdapter(responseDTOList);
+        recyclerView.setAdapter(sneakerViewAdapter);
+        recyclerView.setLayoutManager(gridLayoutManager);
     }
 }

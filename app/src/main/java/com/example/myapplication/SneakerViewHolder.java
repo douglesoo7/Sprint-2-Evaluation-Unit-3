@@ -9,11 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.List;
-
 public class SneakerViewHolder extends RecyclerView.ViewHolder {
 
-    private List<ResponseDTO> responseDTOList;
     private ImageView ivSneakerImage;
     private TextView tvShoeName, tvShoePrice;
 
@@ -23,7 +20,7 @@ public class SneakerViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setData(ResponseDTO responseDTOList) {
-        Glide.with(ivSneakerImage).load(responseDTOList).into(ivSneakerImage);
+        Glide.with(ivSneakerImage).load(responseDTOList.getMedia().getImageUrl()).into(ivSneakerImage);
         tvShoeName.setText(responseDTOList.getName());
         tvShoePrice.setText(responseDTOList.getRetailPrice());
     }
